@@ -1,0 +1,676 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3704B0F52A45C4B60045CBB9 /* libindigo.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 371597832A1EB2CD00E8BF1B /* libindigo.dylib */; };
+		3704B0F62A45C4B60045CBB9 /* libindigo.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 371597832A1EB2CD00E8BF1B /* libindigo.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		3704B0FC2A45ED640045CBB9 /* myClient.c in Sources */ = {isa = PBXBuildFile; fileRef = 3704B0FB2A45ED640045CBB9 /* myClient.c */; };
+		371597822A1EB2B800E8BF1B /* libindigo.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 371597812A1EB2B800E8BF1B /* libindigo.dylib */; };
+		371597842A1EB2CD00E8BF1B /* libindigo.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 371597832A1EB2CD00E8BF1B /* libindigo.dylib */; };
+		37387C302A2A161C008A11AE /* SwClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37387C2E2A28BDE9008A11AE /* SwClient.swift */; };
+		37387CD62A2B7353008A11AE /* StreamingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37387CD52A2B7353008A11AE /* StreamingImageView.swift */; };
+		37387CD82A2B76EB008A11AE /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37387CD72A2B76EB008A11AE /* OverlayView.swift */; };
+		3764367D2A19A08C0056AB85 /* IndigoPolarAlignAidApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3764367C2A19A08C0056AB85 /* IndigoPolarAlignAidApp.swift */; };
+		3764367F2A19A08C0056AB85 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3764367E2A19A08C0056AB85 /* ContentView.swift */; };
+		376436812A19A08D0056AB85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 376436802A19A08D0056AB85 /* Assets.xcassets */; };
+		376436842A19A08D0056AB85 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 376436832A19A08D0056AB85 /* Preview Assets.xcassets */; };
+		3764368F2A19A08E0056AB85 /* IndigoPolarAlignAidTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3764368E2A19A08E0056AB85 /* IndigoPolarAlignAidTests.swift */; };
+		376436992A19A08E0056AB85 /* IndigoPolarAlignAidUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376436982A19A08E0056AB85 /* IndigoPolarAlignAidUITests.swift */; };
+		3764369B2A19A08E0056AB85 /* IndigoPolarAlignAidUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3764369A2A19A08E0056AB85 /* IndigoPolarAlignAidUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3764368B2A19A08E0056AB85 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 376436712A19A08C0056AB85 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 376436782A19A08C0056AB85;
+			remoteInfo = IndigoPolarAlignAid;
+		};
+		376436952A19A08E0056AB85 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 376436712A19A08C0056AB85 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 376436782A19A08C0056AB85;
+			remoteInfo = IndigoPolarAlignAid;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3704B0F72A45C4B60045CBB9 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3704B0F62A45C4B60045CBB9 /* libindigo.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		3704B0FA2A45ED640045CBB9 /* myClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myClient.h; sourceTree = "<group>"; };
+		3704B0FB2A45ED640045CBB9 /* myClient.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = myClient.c; sourceTree = "<group>"; };
+		371597812A1EB2B800E8BF1B /* libindigo.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libindigo.dylib; path = ../../indigo/build/lib/libindigo.dylib; sourceTree = "<group>"; };
+		371597832A1EB2CD00E8BF1B /* libindigo.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libindigo.dylib; path = ../../indigo/build/lib/libindigo.dylib; sourceTree = "<group>"; };
+		37387C2E2A28BDE9008A11AE /* SwClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwClient.swift; sourceTree = "<group>"; };
+		37387CD52A2B7353008A11AE /* StreamingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingImageView.swift; sourceTree = "<group>"; };
+		37387CD72A2B76EB008A11AE /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
+		376436792A19A08C0056AB85 /* IndigoPolarAlignAid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IndigoPolarAlignAid.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3764367C2A19A08C0056AB85 /* IndigoPolarAlignAidApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndigoPolarAlignAidApp.swift; sourceTree = "<group>"; };
+		3764367E2A19A08C0056AB85 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		376436802A19A08D0056AB85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		376436832A19A08D0056AB85 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		376436852A19A08D0056AB85 /* IndigoPolarAlignAid.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IndigoPolarAlignAid.entitlements; sourceTree = "<group>"; };
+		3764368A2A19A08E0056AB85 /* IndigoPolarAlignAidTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IndigoPolarAlignAidTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3764368E2A19A08E0056AB85 /* IndigoPolarAlignAidTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndigoPolarAlignAidTests.swift; sourceTree = "<group>"; };
+		376436942A19A08E0056AB85 /* IndigoPolarAlignAidUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IndigoPolarAlignAidUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		376436982A19A08E0056AB85 /* IndigoPolarAlignAidUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndigoPolarAlignAidUITests.swift; sourceTree = "<group>"; };
+		3764369A2A19A08E0056AB85 /* IndigoPolarAlignAidUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndigoPolarAlignAidUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		376436A72A19A14D0056AB85 /* IndigoPolarAlignAid-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IndigoPolarAlignAid-Bridging-Header.h"; sourceTree = "<group>"; };
+		3764374B2A1EAAB40056AB85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		376436762A19A08C0056AB85 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3704B0F52A45C4B60045CBB9 /* libindigo.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		376436872A19A08E0056AB85 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		376436912A19A08E0056AB85 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				371597842A1EB2CD00E8BF1B /* libindigo.dylib in Frameworks */,
+				371597822A1EB2B800E8BF1B /* libindigo.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		37387C332A2A271D008A11AE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		376436702A19A08C0056AB85 = {
+			isa = PBXGroup;
+			children = (
+				3764367B2A19A08C0056AB85 /* IndigoPolarAlignAid */,
+				3764368D2A19A08E0056AB85 /* IndigoPolarAlignAidTests */,
+				376436972A19A08E0056AB85 /* IndigoPolarAlignAidUITests */,
+				3764367A2A19A08C0056AB85 /* Products */,
+				37387C332A2A271D008A11AE /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3764367A2A19A08C0056AB85 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				376436792A19A08C0056AB85 /* IndigoPolarAlignAid.app */,
+				3764368A2A19A08E0056AB85 /* IndigoPolarAlignAidTests.xctest */,
+				376436942A19A08E0056AB85 /* IndigoPolarAlignAidUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3764367B2A19A08C0056AB85 /* IndigoPolarAlignAid */ = {
+			isa = PBXGroup;
+			children = (
+				3764374B2A1EAAB40056AB85 /* Info.plist */,
+				3764367C2A19A08C0056AB85 /* IndigoPolarAlignAidApp.swift */,
+				3764367E2A19A08C0056AB85 /* ContentView.swift */,
+				37387CD52A2B7353008A11AE /* StreamingImageView.swift */,
+				37387CD72A2B76EB008A11AE /* OverlayView.swift */,
+				37387C2E2A28BDE9008A11AE /* SwClient.swift */,
+				3704B0FA2A45ED640045CBB9 /* myClient.h */,
+				3704B0FB2A45ED640045CBB9 /* myClient.c */,
+				376436802A19A08D0056AB85 /* Assets.xcassets */,
+				376436852A19A08D0056AB85 /* IndigoPolarAlignAid.entitlements */,
+				376436822A19A08D0056AB85 /* Preview Content */,
+				376436A72A19A14D0056AB85 /* IndigoPolarAlignAid-Bridging-Header.h */,
+			);
+			path = IndigoPolarAlignAid;
+			sourceTree = "<group>";
+		};
+		376436822A19A08D0056AB85 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				376436832A19A08D0056AB85 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3764368D2A19A08E0056AB85 /* IndigoPolarAlignAidTests */ = {
+			isa = PBXGroup;
+			children = (
+				3764368E2A19A08E0056AB85 /* IndigoPolarAlignAidTests.swift */,
+			);
+			path = IndigoPolarAlignAidTests;
+			sourceTree = "<group>";
+		};
+		376436972A19A08E0056AB85 /* IndigoPolarAlignAidUITests */ = {
+			isa = PBXGroup;
+			children = (
+				371597812A1EB2B800E8BF1B /* libindigo.dylib */,
+				371597832A1EB2CD00E8BF1B /* libindigo.dylib */,
+				376436982A19A08E0056AB85 /* IndigoPolarAlignAidUITests.swift */,
+				3764369A2A19A08E0056AB85 /* IndigoPolarAlignAidUITestsLaunchTests.swift */,
+			);
+			path = IndigoPolarAlignAidUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		376436782A19A08C0056AB85 /* IndigoPolarAlignAid */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3764369E2A19A08E0056AB85 /* Build configuration list for PBXNativeTarget "IndigoPolarAlignAid" */;
+			buildPhases = (
+				376436752A19A08C0056AB85 /* Sources */,
+				376436762A19A08C0056AB85 /* Frameworks */,
+				376436772A19A08C0056AB85 /* Resources */,
+				3704B0F72A45C4B60045CBB9 /* Embed Libraries */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IndigoPolarAlignAid;
+			productName = IndigoPolarAlignAid;
+			productReference = 376436792A19A08C0056AB85 /* IndigoPolarAlignAid.app */;
+			productType = "com.apple.product-type.application";
+		};
+		376436892A19A08E0056AB85 /* IndigoPolarAlignAidTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 376436A12A19A08E0056AB85 /* Build configuration list for PBXNativeTarget "IndigoPolarAlignAidTests" */;
+			buildPhases = (
+				376436862A19A08E0056AB85 /* Sources */,
+				376436872A19A08E0056AB85 /* Frameworks */,
+				376436882A19A08E0056AB85 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3764368C2A19A08E0056AB85 /* PBXTargetDependency */,
+			);
+			name = IndigoPolarAlignAidTests;
+			productName = IndigoPolarAlignAidTests;
+			productReference = 3764368A2A19A08E0056AB85 /* IndigoPolarAlignAidTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		376436932A19A08E0056AB85 /* IndigoPolarAlignAidUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 376436A42A19A08E0056AB85 /* Build configuration list for PBXNativeTarget "IndigoPolarAlignAidUITests" */;
+			buildPhases = (
+				376436902A19A08E0056AB85 /* Sources */,
+				376436912A19A08E0056AB85 /* Frameworks */,
+				376436922A19A08E0056AB85 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				376436962A19A08E0056AB85 /* PBXTargetDependency */,
+			);
+			name = IndigoPolarAlignAidUITests;
+			productName = IndigoPolarAlignAidUITests;
+			productReference = 376436942A19A08E0056AB85 /* IndigoPolarAlignAidUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		376436712A19A08C0056AB85 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					376436782A19A08C0056AB85 = {
+						CreatedOnToolsVersion = 14.3;
+						LastSwiftMigration = 1430;
+					};
+					376436892A19A08E0056AB85 = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 376436782A19A08C0056AB85;
+					};
+					376436932A19A08E0056AB85 = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 376436782A19A08C0056AB85;
+					};
+				};
+			};
+			buildConfigurationList = 376436742A19A08C0056AB85 /* Build configuration list for PBXProject "IndigoPolarAlignAid" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 376436702A19A08C0056AB85;
+			productRefGroup = 3764367A2A19A08C0056AB85 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				376436782A19A08C0056AB85 /* IndigoPolarAlignAid */,
+				376436892A19A08E0056AB85 /* IndigoPolarAlignAidTests */,
+				376436932A19A08E0056AB85 /* IndigoPolarAlignAidUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		376436772A19A08C0056AB85 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				376436842A19A08D0056AB85 /* Preview Assets.xcassets in Resources */,
+				376436812A19A08D0056AB85 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		376436882A19A08E0056AB85 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		376436922A19A08E0056AB85 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		376436752A19A08C0056AB85 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3764367F2A19A08C0056AB85 /* ContentView.swift in Sources */,
+				37387C302A2A161C008A11AE /* SwClient.swift in Sources */,
+				3764367D2A19A08C0056AB85 /* IndigoPolarAlignAidApp.swift in Sources */,
+				37387CD62A2B7353008A11AE /* StreamingImageView.swift in Sources */,
+				3704B0FC2A45ED640045CBB9 /* myClient.c in Sources */,
+				37387CD82A2B76EB008A11AE /* OverlayView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		376436862A19A08E0056AB85 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3764368F2A19A08E0056AB85 /* IndigoPolarAlignAidTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		376436902A19A08E0056AB85 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3764369B2A19A08E0056AB85 /* IndigoPolarAlignAidUITestsLaunchTests.swift in Sources */,
+				376436992A19A08E0056AB85 /* IndigoPolarAlignAidUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3764368C2A19A08E0056AB85 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 376436782A19A08C0056AB85 /* IndigoPolarAlignAid */;
+			targetProxy = 3764368B2A19A08E0056AB85 /* PBXContainerItemProxy */;
+		};
+		376436962A19A08E0056AB85 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 376436782A19A08C0056AB85 /* IndigoPolarAlignAid */;
+			targetProxy = 376436952A19A08E0056AB85 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3764369C2A19A08E0056AB85 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SYSTEM_HEADER_SEARCH_PATHS = "";
+			};
+			name = Debug;
+		};
+		3764369D2A19A08E0056AB85 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SYSTEM_HEADER_SEARCH_PATHS = "";
+			};
+			name = Release;
+		};
+		3764369F2A19A08E0056AB85 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = IndigoPolarAlignAid/IndigoPolarAlignAid.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"IndigoPolarAlignAid/Preview Content\"";
+				DEVELOPMENT_TEAM = 2ADH6VW796;
+				EAGER_LINKING = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_NO_COMMON_BLOCKS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "";
+				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "";
+				INFOPLIST_FILE = IndigoPolarAlignAid/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = ../indigo/build/lib;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = GB.IndigoPolarAlignAid;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "IndigoPolarAlignAid/IndigoPolarAlignAid-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYSTEM_HEADER_SEARCH_PATHS = ../indigo/indigo_libs;
+			};
+			name = Debug;
+		};
+		376436A02A19A08E0056AB85 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = IndigoPolarAlignAid/IndigoPolarAlignAid.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"IndigoPolarAlignAid/Preview Content\"";
+				DEVELOPMENT_TEAM = 2ADH6VW796;
+				EAGER_LINKING = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_NO_COMMON_BLOCKS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "";
+				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "";
+				INFOPLIST_FILE = IndigoPolarAlignAid/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = ../indigo/build/lib;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = GB.IndigoPolarAlignAid;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "IndigoPolarAlignAid/IndigoPolarAlignAid-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				SYSTEM_HEADER_SEARCH_PATHS = ../indigo/indigo_libs;
+			};
+			name = Release;
+		};
+		376436A22A19A08E0056AB85 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 2ADH6VW796;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = GB.IndigoPolarAlignAidTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IndigoPolarAlignAid.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/IndigoPolarAlignAid";
+			};
+			name = Debug;
+		};
+		376436A32A19A08E0056AB85 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 2ADH6VW796;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = GB.IndigoPolarAlignAidTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IndigoPolarAlignAid.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/IndigoPolarAlignAid";
+			};
+			name = Release;
+		};
+		376436A52A19A08E0056AB85 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 2ADH6VW796;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = GB.IndigoPolarAlignAidUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = IndigoPolarAlignAid;
+			};
+			name = Debug;
+		};
+		376436A62A19A08E0056AB85 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 2ADH6VW796;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = GB.IndigoPolarAlignAidUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = IndigoPolarAlignAid;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		376436742A19A08C0056AB85 /* Build configuration list for PBXProject "IndigoPolarAlignAid" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3764369C2A19A08E0056AB85 /* Debug */,
+				3764369D2A19A08E0056AB85 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3764369E2A19A08E0056AB85 /* Build configuration list for PBXNativeTarget "IndigoPolarAlignAid" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3764369F2A19A08E0056AB85 /* Debug */,
+				376436A02A19A08E0056AB85 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		376436A12A19A08E0056AB85 /* Build configuration list for PBXNativeTarget "IndigoPolarAlignAidTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				376436A22A19A08E0056AB85 /* Debug */,
+				376436A32A19A08E0056AB85 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		376436A42A19A08E0056AB85 /* Build configuration list for PBXNativeTarget "IndigoPolarAlignAidUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				376436A52A19A08E0056AB85 /* Debug */,
+				376436A62A19A08E0056AB85 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 376436712A19A08C0056AB85 /* Project object */;
+}
