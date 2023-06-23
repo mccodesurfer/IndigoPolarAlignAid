@@ -9,6 +9,7 @@ import SwiftUI
 
 struct OverlayView: View {
     @State private var selectedLocation: CGPoint?
+    @State private var correctionVector: CGVector?
     var body: some View {
         let swClient = SwClient()
         GeometryReader { geometry in
@@ -29,6 +30,7 @@ struct OverlayView: View {
         .onTapGesture(coordinateSpace: .local) { location in
             print("Tap location: \(location)")
             selectedLocation = location
+            correctionVector = swClient.getCorrectionVector()
         }
     }
 }

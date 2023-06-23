@@ -16,6 +16,9 @@ struct SwClient {
     func getImageURL() -> String {
         return "m101_pinwheel_galaxy-St"
     }
+    func getCorrectionVector() -> CGVector {
+        return correctionVector
+    }
 }
 
 //func myClientCall() {
