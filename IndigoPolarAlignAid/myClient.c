@@ -44,7 +44,7 @@
 static int device_pid;
 static bool connected = false;
 
-#define CCD_SIMULATOR "CCD Imager Simulator @ indigo_ccd_simulator"
+#define CCD_SIMULATOR "CCD Imager Simulator"
 
 static indigo_result client_attach(indigo_client *client) {
     indigo_log("attached to INDI bus...");
@@ -53,7 +53,7 @@ static indigo_result client_attach(indigo_client *client) {
 }
 
 static indigo_result client_define_property(indigo_client *client, indigo_device *device, indigo_property *property, const char *message) {
-    indigo_log("in client_define_property...");
+    indigo_log("client_define_property called...");
     if (strcmp(property->device, CCD_SIMULATOR))
         return INDIGO_OK;
     if (!strcmp(property->name, CONNECTION_PROPERTY_NAME)) {
@@ -64,7 +64,7 @@ static indigo_result client_define_property(indigo_client *client, indigo_device
 }
 
 static indigo_result client_update_property(indigo_client *client, indigo_device *device, indigo_property *property, const char *message) {
-    indigo_log("in client_update_property...");
+    indigo_log("client_update_property called...");
     if (strcmp(property->device, CCD_SIMULATOR))
         return INDIGO_OK;
     if (!strcmp(property->name, CONNECTION_PROPERTY_NAME) && property->state == INDIGO_OK_STATE) {
@@ -102,7 +102,7 @@ static indigo_result client_update_property(indigo_client *client, indigo_device
 
 
 static indigo_result client_send_message(indigo_client *client, indigo_device *device, indigo_property *property, const char *message) {
-    indigo_log(message);
+    indigo_log("%s", message);
     return INDIGO_OK;
 }
 
@@ -148,7 +148,12 @@ int myClient(int argc, const char ** argv) {
         indigo_attach_client(&client);
         indigo_xml_parse(protocol_adapter, &client);
         indigo_log("Hello from %s... waiting for 10 seconds...", "Polar Align Aid");
+        /* We want to connect to a remote indigo host indigosky.local:7624 */
+        indigo_server_entry *server;
+        indigo_connect_server("indigosky", "indigosky.local", 7624, &server);
+
         indigo_usleep(10 * ONE_SECOND_DELAY);
+        indigo_disconnect_server(server);
         indigo_stop();
     }
     return 0;
