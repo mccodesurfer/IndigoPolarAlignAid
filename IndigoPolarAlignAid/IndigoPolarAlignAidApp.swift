@@ -14,4 +14,9 @@ struct IndigoPolarAlignAidApp: App {
             ContentView()
         }
     }
+    
+    init(){
+        let swClient = SwClient()
+        swClient.runMyClient()
+    }
 }

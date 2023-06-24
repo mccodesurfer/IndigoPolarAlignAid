@@ -143,12 +143,12 @@
 				37387CD52A2B7353008A11AE /* StreamingImageView.swift */,
 				37387CD72A2B76EB008A11AE /* OverlayView.swift */,
 				37387C2E2A28BDE9008A11AE /* SwClient.swift */,
+				376436A72A19A14D0056AB85 /* IndigoPolarAlignAid-Bridging-Header.h */,
 				3704B0FA2A45ED640045CBB9 /* myClient.h */,
 				3704B0FB2A45ED640045CBB9 /* myClient.c */,
 				376436802A19A08D0056AB85 /* Assets.xcassets */,
 				376436852A19A08D0056AB85 /* IndigoPolarAlignAid.entitlements */,
 				376436822A19A08D0056AB85 /* Preview Content */,
-				376436A72A19A14D0056AB85 /* IndigoPolarAlignAid-Bridging-Header.h */,
 			);
 			path = IndigoPolarAlignAid;
 			sourceTree = "<group>";

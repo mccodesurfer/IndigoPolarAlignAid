@@ -10,4 +10,6 @@
 
 #include <stdio.h>
 
+int myClient(int argc, const char ** argv);
+
 #endif /* myClient_h */

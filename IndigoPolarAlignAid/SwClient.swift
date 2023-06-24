@@ -16,19 +16,16 @@ struct SwClient {
     func getImageURL() -> String {
         return "m101_pinwheel_galaxy-St"
     }
+    
     func getCorrectionVector() -> CGVector {
         return correctionVector
     }
+    
+    func runMyClient() {
+        let argc: CInt = 2
+        var argv: [UnsafePointer<CChar>?] = [("IndigoPolarAlignAid" as NSString).utf8String,("2" as NSString).utf8String,nil]
+                
+        print("\(argc)\n\(argv)")
+        var myClientResult = myClient(argc, &argv)
+    }
 }
-
-//func myClientCall() {
-//    let argc: CInt = 2
-//    let argv  = ["arg 1", "arg 2"]
-//    print("\(argc)\n\(argv)")
-//    //var myClientResult = myClient(mySwiftArgc, mySwiftArgv)
-//}
-//
-//func swiftClient(argc: Int32, argv: UnsafeMutablePointer<UnsafePointer<CChar>?>?) -> Int32? {
-//    myClient(argc, argv)
-//    return Int32(0)
-//}
