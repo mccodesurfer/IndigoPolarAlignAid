@@ -44,7 +44,7 @@
 static int device_pid;
 static bool connected = false;
 
-#define POLAR_ALIGN_AID "Polar Align Aid @ indigo_polar_align_aid"
+#define CCD_SIMULATOR "CCD Imager Simulator @ indigo_ccd_simulator"
 
 static indigo_result client_attach(indigo_client *client) {
     indigo_log("attached to INDI bus...");
@@ -53,7 +53,8 @@ static indigo_result client_attach(indigo_client *client) {
 }
 
 static indigo_result client_define_property(indigo_client *client, indigo_device *device, indigo_property *property, const char *message) {
-    if (strcmp(property->device, POLAR_ALIGN_AID))
+    indigo_log("in client_define_property...");
+    if (strcmp(property->device, CCD_SIMULATOR))
         return INDIGO_OK;
     if (!strcmp(property->name, CONNECTION_PROPERTY_NAME)) {
         indigo_device_connect(client, property->device);
@@ -63,7 +64,8 @@ static indigo_result client_define_property(indigo_client *client, indigo_device
 }
 
 static indigo_result client_update_property(indigo_client *client, indigo_device *device, indigo_property *property, const char *message) {
-    if (strcmp(property->device, POLAR_ALIGN_AID))
+    indigo_log("in client_update_property...");
+    if (strcmp(property->device, CCD_SIMULATOR))
         return INDIGO_OK;
     if (!strcmp(property->name, CONNECTION_PROPERTY_NAME) && property->state == INDIGO_OK_STATE) {
         if (indigo_get_switch(property, CONNECTION_CONNECTED_ITEM_NAME)) {
@@ -99,6 +101,11 @@ static indigo_result client_update_property(indigo_client *client, indigo_device
 }
 
 
+static indigo_result client_send_message(indigo_client *client, indigo_device *device, indigo_property *property, const char *message) {
+    indigo_log(message);
+    return INDIGO_OK;
+}
+
 static indigo_result client_detach(indigo_client *client) {
     indigo_log("detached from INDI bus...");
     kill(device_pid, SIGKILL);
@@ -107,11 +114,11 @@ static indigo_result client_detach(indigo_client *client) {
 }
 
 static indigo_client client = {
-    "Test", false, NULL, INDIGO_OK, INDIGO_VERSION_CURRENT, NULL,
+    "MyClient", false, NULL, INDIGO_OK, INDIGO_VERSION_CURRENT, NULL,
     client_attach,
     client_define_property,
     client_update_property,
-    NULL,
+    client_send_message,
     NULL,
     client_detach
 };
@@ -130,18 +137,18 @@ int myClient(int argc, const char ** argv) {
         dup2(output[0], 0);
         close(1);
         dup2(input[1], 1);
-        execl("../build/drivers/indigo_polar_align_aid", "indigo_polar_align_aid", NULL);
+        execl("../build/drivers/indigo_ccd_simulator", "indigo_ccd_simulator", NULL);
     } else {
         close(input[1]);
         close(output[0]);
-        indigo_set_log_level(INDIGO_LOG_INFO);
+        indigo_set_log_level(INDIGO_LOG_DEBUG);
         indigo_start();
-        indigo_device *protocol_adapter = indigo_xml_client_adapter("indigo_polar_align_aid", "", input[0], output[1]);
+        indigo_device *protocol_adapter = indigo_xml_client_adapter("indigo_ccd_simulator", "", input[0], output[1]);
         indigo_attach_device(protocol_adapter);
         indigo_attach_client(&client);
         indigo_xml_parse(protocol_adapter, &client);
-        indigo_log("Hello from %s... waiting for 10 seconds...", POLAR_ALIGN_AID);
-        sleep(10);
+        indigo_log("Hello from %s... waiting for 10 seconds...", "Polar Align Aid");
+        indigo_usleep(10 * ONE_SECOND_DELAY);
         indigo_stop();
     }
     return 0;
