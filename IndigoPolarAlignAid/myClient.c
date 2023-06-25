@@ -83,8 +83,8 @@ static indigo_result client_update_property(indigo_client *client, indigo_device
         } else {
 //            if (connected) {
                 indigo_log("disconnected...");
-                indigo_log("stopping from client_update_property");
-                indigo_stop();
+//                indigo_log("stopping from client_update_property");
+//                indigo_stop();
                 connected = false;
 //            }
         }
