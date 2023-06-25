@@ -43,8 +43,9 @@
 
 static int device_pid;
 static bool connected = false;
+static int count = 10;
 
-#define CCD_SIMULATOR "CCD Imager Simulator"
+#define CCD_SIMULATOR "CCD Guider Simulator @ indigosky"
 
 static indigo_result client_attach(indigo_client *client) {
     indigo_log("attached to INDI bus...");
@@ -53,7 +54,7 @@ static indigo_result client_attach(indigo_client *client) {
 }
 
 static indigo_result client_define_property(indigo_client *client, indigo_device *device, indigo_property *property, const char *message) {
-    indigo_log("client_define_property called...");
+    indigo_log("%s %s defined...", property->device, property->name);
     if (strcmp(property->device, CCD_SIMULATOR))
         return INDIGO_OK;
     if (!strcmp(property->name, CONNECTION_PROPERTY_NAME)) {
@@ -64,28 +65,33 @@ static indigo_result client_define_property(indigo_client *client, indigo_device
 }
 
 static indigo_result client_update_property(indigo_client *client, indigo_device *device, indigo_property *property, const char *message) {
-    indigo_log("client_update_property called...");
     if (strcmp(property->device, CCD_SIMULATOR))
         return INDIGO_OK;
     if (!strcmp(property->name, CONNECTION_PROPERTY_NAME) && property->state == INDIGO_OK_STATE) {
+        indigo_log("%s %s updated...", property->device, property->name);
         if (indigo_get_switch(property, CONNECTION_CONNECTED_ITEM_NAME)) {
-            if (!connected) {
+//            if (!connected) {
                 connected = true;
                 indigo_log("connected...");
+//                indigo_item item[] = { CCD_UPLOAD_MODE_CLIENT_ITEM_NAME };
+//                static bool value = true;
+//                indigo_set_switch(property, item, value);
                 static const char * items[] = { CCD_EXPOSURE_ITEM_NAME };
                 static double values[] = { 3.0 };
                 indigo_change_number_property(client, property->device, CCD_EXPOSURE_PROPERTY_NAME, 1, items, values);
-            }
+//            }
         } else {
-            if (connected) {
+//            if (connected) {
                 indigo_log("disconnected...");
+                indigo_log("stopping from client_update_property");
                 indigo_stop();
                 connected = false;
-            }
+//            }
         }
         return INDIGO_OK;
     }
     if (!strcmp(property->name, CCD_EXPOSURE_PROPERTY_NAME)) {
+        indigo_log("%s %s updated...", property->device, property->name);
         if (property->state == INDIGO_BUSY_STATE) {
             indigo_log("exposure %gs...", property->items[0].number.value);
         } else if (property->state == INDIGO_OK_STATE) {
@@ -93,16 +99,19 @@ static indigo_result client_update_property(indigo_client *client, indigo_device
         }
         return INDIGO_OK;
     }
-    if (!strcmp(property->name, CCD_IMAGE_PROPERTY_NAME) && property->state == INDIGO_OK_STATE) {
-        indigo_log("image received (%d bytes)...", property->items[0].blob.size);
-        indigo_device_disconnect(client, property->device);
+    if (!strcmp(property->name, CCD_IMAGE_PROPERTY_NAME)) {
+        indigo_log("%s %s updated...", property->device, property->name);
+        if (property->state == INDIGO_OK_STATE) {
+            indigo_log("image received (%d bytes)...", property->items[0].blob.size);
+            indigo_device_disconnect(client, property->device);
+        }
+        return INDIGO_OK;
     }
     return INDIGO_OK;
 }
 
-
 static indigo_result client_send_message(indigo_client *client, indigo_device *device, indigo_property *property, const char *message) {
-    indigo_log("%s", message);
+    indigo_log("%s recieved %s %s message: %s", client, property->device, property->name, message);
     return INDIGO_OK;
 }
 
@@ -139,21 +148,35 @@ int myClient(int argc, const char ** argv) {
         dup2(input[1], 1);
         execl("../build/drivers/indigo_ccd_simulator", "indigo_ccd_simulator", NULL);
     } else {
+        indigo_log("Hello from %s... waiting for 10 seconds...", "Polar Align Aid");
         close(input[1]);
         close(output[0]);
         indigo_set_log_level(INDIGO_LOG_DEBUG);
         indigo_start();
-        indigo_device *protocol_adapter = indigo_xml_client_adapter("indigo_ccd_simulator", "", input[0], output[1]);
-        indigo_attach_device(protocol_adapter);
+//        indigo_device *protocol_adapter = indigo_xml_client_adapter("indigo_ccd_simulator", "", input[0], output[1]);
+//        indigo_attach_device(protocol_adapter);
         indigo_attach_client(&client);
-        indigo_xml_parse(protocol_adapter, &client);
-        indigo_log("Hello from %s... waiting for 10 seconds...", "Polar Align Aid");
+//        indigo_xml_parse(protocol_adapter, &client);
         /* We want to connect to a remote indigo host indigosky.local:7624 */
         indigo_server_entry *server;
         indigo_connect_server("indigosky", "indigosky.local", 7624, &server);
+        while (connected == false) {
+            indigo_log("waiting for connection to device... ");
+            indigo_usleep(ONE_SECOND_DELAY);
+        }
+        int i;
+        for (i=0;i<count;i++) {
+            indigo_log("connected is %s...", connected ? "true" : "false");
+            indigo_usleep(ONE_SECOND_DELAY);
 
-        indigo_usleep(10 * ONE_SECOND_DELAY);
+        }
+        while (connected == true) {
+            indigo_log("disconnecting... ");
+            indigo_device_disconnect(&client, CCD_SIMULATOR);
+            indigo_usleep(ONE_SECOND_DELAY);
+        }
         indigo_disconnect_server(server);
+        indigo_log("stopping from main");
         indigo_stop();
     }
     return 0;
