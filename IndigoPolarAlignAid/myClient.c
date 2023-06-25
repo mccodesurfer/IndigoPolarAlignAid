@@ -160,11 +160,12 @@ int myClient(int argc, const char ** argv) {
         /* We want to connect to a remote indigo host indigosky.local:7624 */
         indigo_server_entry *server;
         indigo_connect_server("indigosky", "indigosky.local", 7624, &server);
-        while (connected == false) {
+        int i = count;
+        while ((connected == false) && (i !=0)) { // timeout after
             indigo_log("waiting for connection to device... ");
             indigo_usleep(ONE_SECOND_DELAY);
+            i--;
         }
-        int i;
         for (i=0;i<count;i++) {
             indigo_log("connected is %s...", connected ? "true" : "false");
             indigo_usleep(ONE_SECOND_DELAY);
