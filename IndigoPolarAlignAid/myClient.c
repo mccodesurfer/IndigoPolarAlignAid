@@ -44,6 +44,7 @@
 static int device_pid;
 static bool connected = false;
 static int count = 10;
+static int img_count = 1;
 
 #define CCD_SIMULATOR "CCD Guider Simulator @ indigosky"
 
@@ -61,6 +62,26 @@ static indigo_result client_define_property(indigo_client *client, indigo_device
         indigo_device_connect(client, property->device);
         return INDIGO_OK;
     }
+    if (!strcmp(property->name, "FILE_NAME")) {
+        char value[1024] = { 0 };
+        static const char * items[] = { "PATH" };
+        static const char *values[1];
+        values[0] = value;
+        for (int i = 0 ; i < 1023; i++)
+            value[i] = '0' + i % 10;
+        indigo_change_text_property(client, CCD_SIMULATOR, "FILE_NAME", 1, items, values);
+    }
+    if (!strcmp(property->name, CCD_IMAGE_PROPERTY_NAME)) {
+        if (device->version >= INDIGO_VERSION_2_0)
+            indigo_enable_blob(client, property, INDIGO_ENABLE_BLOB_URL);
+        else
+            indigo_enable_blob(client, property, INDIGO_ENABLE_BLOB_ALSO);
+    }
+    if (!strcmp(property->name, CCD_IMAGE_FORMAT_PROPERTY_NAME)) {
+        static const char * items[] = { CCD_IMAGE_FORMAT_JPEG_ITEM_NAME };
+        static bool values[] = { true };
+        indigo_change_switch_property(client, CCD_SIMULATOR, CCD_IMAGE_FORMAT_PROPERTY_NAME, 1, items, values);
+    }
     return INDIGO_OK;
 }
 
@@ -73,9 +94,6 @@ static indigo_result client_update_property(indigo_client *client, indigo_device
 //            if (!connected) {
                 connected = true;
                 indigo_log("connected...");
-//                indigo_item item[] = { CCD_UPLOAD_MODE_CLIENT_ITEM_NAME };
-//                static bool value = true;
-//                indigo_set_switch(property, item, value);
                 static const char * items[] = { CCD_EXPOSURE_ITEM_NAME };
                 static double values[] = { 3.0 };
                 indigo_change_number_property(client, property->device, CCD_EXPOSURE_PROPERTY_NAME, 1, items, values);
@@ -83,12 +101,34 @@ static indigo_result client_update_property(indigo_client *client, indigo_device
         } else {
 //            if (connected) {
                 indigo_log("disconnected...");
-//                indigo_log("stopping from client_update_property");
-//                indigo_stop();
                 connected = false;
 //            }
         }
         return INDIGO_OK;
+    }
+    if (!strcmp(property->name, CCD_IMAGE_PROPERTY_NAME) && property->state == INDIGO_OK_STATE) {
+        indigo_log("%s %s updated...", property->device, property->name);
+        /* URL blob transfer is available only in client - server setup.
+           This will never be called in case of a client loading a driver. */
+        if (*property->items[0].blob.url && indigo_populate_http_blob_item(&property->items[0]))
+            indigo_log("image URL received (%s, %d bytes)...", property->items[0].blob.url, property->items[0].blob.size);
+
+        if (property->items[0].blob.value) {
+            char name[32];
+            sprintf(name, "img_%02d.jpg", img_count);
+            FILE *f = fopen(name, "w");
+            if (fwrite(property->items[0].blob.value, property->items[0].blob.size, 1, f)) {
+                indigo_log("%d size image saved to %s...", property->items[0].blob.size, name);
+            } else {
+                indigo_log("image save failed!", name);
+            }
+            fclose(f);
+            /* In case we have URL BLOB transfer we need to release the blob ourselves */
+            if (*property->items[0].blob.url) {
+                free(property->items[0].blob.value);
+                property->items[0].blob.value = NULL;
+            }
+        }
     }
     if (!strcmp(property->name, CCD_EXPOSURE_PROPERTY_NAME)) {
         indigo_log("%s %s updated...", property->device, property->name);
@@ -96,14 +136,6 @@ static indigo_result client_update_property(indigo_client *client, indigo_device
             indigo_log("exposure %gs...", property->items[0].number.value);
         } else if (property->state == INDIGO_OK_STATE) {
             indigo_log("exposure done...");
-        }
-        return INDIGO_OK;
-    }
-    if (!strcmp(property->name, CCD_IMAGE_PROPERTY_NAME)) {
-        indigo_log("%s %s updated...", property->device, property->name);
-        if (property->state == INDIGO_OK_STATE) {
-            indigo_log("image received (%d bytes)...", property->items[0].blob.size);
-            indigo_device_disconnect(client, property->device);
         }
         return INDIGO_OK;
     }
@@ -153,10 +185,7 @@ int myClient(int argc, const char ** argv) {
         close(output[0]);
         indigo_set_log_level(INDIGO_LOG_DEBUG);
         indigo_start();
-//        indigo_device *protocol_adapter = indigo_xml_client_adapter("indigo_ccd_simulator", "", input[0], output[1]);
-//        indigo_attach_device(protocol_adapter);
         indigo_attach_client(&client);
-//        indigo_xml_parse(protocol_adapter, &client);
         /* We want to connect to a remote indigo host indigosky.local:7624 */
         indigo_server_entry *server;
         indigo_connect_server("indigosky", "indigosky.local", 7624, &server);

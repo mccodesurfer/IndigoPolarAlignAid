@@ -11,7 +11,7 @@ struct OverlayView: View {
     @State private var selectedLocation: CGPoint?
     @State private var correctionVector: CGVector?
     var body: some View {
-        let swClient = SwClient()
+        let swClient: SwClient = SwClient.sharedInstance
         GeometryReader { geometry in
             Canvas { context, size in
                 context.stroke(

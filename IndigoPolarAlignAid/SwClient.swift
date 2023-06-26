@@ -13,19 +13,23 @@ struct SwClient {
     let targetRadius = 10.0
     var correctionVector = CGVector(dx: 50.0, dy: 50.0)
     
+//    func getImageURL() -> String {
+//        return "m101_pinwheel_galaxy-St"
+//    }
+    
     func getImageURL() -> String {
-        return "m101_pinwheel_galaxy-St"
+        return "img_01.jpg"
     }
     
     func getCorrectionVector() -> CGVector {
         return correctionVector
     }
     
-    func runMyClient() {
+    init() {
         let argc: CInt = 2
         var argv: [UnsafePointer<CChar>?] = [("IndigoPolarAlignAid" as NSString).utf8String,("2" as NSString).utf8String,nil]
                 
         print("\(argc)\n\(argv)")
-        var myClientResult = myClient(argc, &argv)
+        _ = myClient(argc, &argv)
     }
 }

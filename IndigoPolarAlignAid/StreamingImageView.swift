@@ -9,12 +9,13 @@ import SwiftUI
 
 struct StreamingImageView: View {
     var body: some View {
-        let swClient = SwClient()
+        let swClient: SwClient = SwClient.sharedInstance
         GeometryReader { geometry in
-            Image(swClient.getImageURL())
-                .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
+//            Image(swClient.getImageURL())
+//                .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
             
-//            AsyncImage(url: URL(string: "file:///Users/greg/Documents/GitHub/IndigoPolarAlignAid/IndigoPolarAlignAid/Assets.xcassets/m101_pinwheel_galaxy-St.imageset/m101_pinwheel_galaxy-St.png"))
+            AsyncImage(url: URL(string: swClient.getImageURL()))
+                .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
         }
     }
 }
