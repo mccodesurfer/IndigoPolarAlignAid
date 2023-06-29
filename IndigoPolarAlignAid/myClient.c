@@ -94,9 +94,9 @@ static indigo_result client_update_property(indigo_client *client, indigo_device
 //            if (!connected) {
                 connected = true;
                 indigo_log("connected...");
-                static const char * items[] = { CCD_EXPOSURE_ITEM_NAME };
-                static double values[] = { 3.0 };
-                indigo_change_number_property(client, property->device, CCD_EXPOSURE_PROPERTY_NAME, 1, items, values);
+                static const char * items[] = { CCD_STREAMING_COUNT_ITEM_NAME };
+                static double values[] = { -1 };
+                indigo_change_number_property(client, property->device, CCD_STREAMING_PROPERTY_NAME, 1, items, values);
 //            }
         } else {
 //            if (connected) {
