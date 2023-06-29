@@ -116,11 +116,15 @@ static indigo_result client_update_property(indigo_client *client, indigo_device
         if (property->items[0].blob.value) {
             char name[32];
             sprintf(name, "img_%02d.jpg", img_count);
-            FILE *f = fopen(name, "w");
-            if (fwrite(property->items[0].blob.value, property->items[0].blob.size, 1, f)) {
-                indigo_log("%d size image saved to %s...", property->items[0].blob.size, name);
+            FILE *f = fopen(name, "wb");
+            if (f) {
+                if (fwrite(property->items[0].blob.value, property->items[0].blob.size, 1, f)) {
+                    indigo_log("image (%d bytes) saved to %s...", property->items[0].blob.size, name);
+                } else {
+                    indigo_log("image file write failed!", name);
+                }
             } else {
-                indigo_log("image save failed!", name);
+                indigo_log("image file open failed!", name);
             }
             fclose(f);
             /* In case we have URL BLOB transfer we need to release the blob ourselves */
@@ -164,7 +168,7 @@ static indigo_client client = {
     client_detach
 };
 
-int myClient(int argc, const char ** argv) {
+int myClient(int argc, const char ** argv, bool *isCancelled) {
     indigo_main_argc = argc;
     indigo_main_argv = argv;
     int input[2], output[2];
@@ -195,10 +199,16 @@ int myClient(int argc, const char ** argv) {
             indigo_usleep(ONE_SECOND_DELAY);
             i--;
         }
-        for (i=0;i<count;i++) {
+//        for (i=0;i<count;i++) {
+//            indigo_log("connected is %s...", connected ? "true" : "false");
+//            indigo_usleep(ONE_SECOND_DELAY);
+//
+//        }
+        while (*isCancelled == false){
+            indigo_log("waiting for cancel signal...");
+            indigo_log("isCancelled is %d", *isCancelled);
             indigo_log("connected is %s...", connected ? "true" : "false");
             indigo_usleep(ONE_SECOND_DELAY);
-
         }
         while (connected == true) {
             indigo_log("disconnecting... ");

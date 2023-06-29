@@ -10,6 +10,9 @@
 
 #include <stdio.h>
 
-int myClient(int argc, const char ** argv);
+#include <indigo/indigo_bus.h>
+
+
+int myClient(int argc, const char ** argv, bool *isCancelled);
 
 #endif /* myClient_h */

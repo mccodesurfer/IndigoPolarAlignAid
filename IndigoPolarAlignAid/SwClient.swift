@@ -18,7 +18,7 @@ struct SwClient {
 //    }
     
     func getImageURL() -> String {
-        return "img_01.jpg"
+        return "file:/Users/greg/Library/Containers/GB.IndigoPolarAlignAid/Data/img_01.jpg"
     }
     
     func getCorrectionVector() -> CGVector {
@@ -26,10 +26,25 @@ struct SwClient {
     }
     
     init() {
-        let argc: CInt = 2
-        var argv: [UnsafePointer<CChar>?] = [("IndigoPolarAlignAid" as NSString).utf8String,("2" as NSString).utf8String,nil]
-                
-        print("\(argc)\n\(argv)")
-        _ = myClient(argc, &argv)
+        let myClientTask: Task = Task {
+            let argc: CInt = 2
+            var argv: [UnsafePointer<CChar>?] = [("IndigoPolarAlignAid" as NSString).utf8String,("2" as NSString).utf8String,nil]
+            
+            let isCancelled = UnsafeMutablePointer<Bool>.allocate(capacity: 1)
+            isCancelled.initialize(to: Task.isCancelled)
+            defer { isCancelled.deallocate() }
+
+            await withTaskCancellationHandler {
+                _ = myClient(argc, &argv, isCancelled)
+            } onCancel: {
+                isCancelled.pointee = true
+            }
+        }
+        let _: Task = Task {
+            try await Task.sleep(for: .seconds(10))
+            print("Timesup!")
+            myClientTask.cancel()
+            print("SWClient: isCancelled is \(myClientTask.isCancelled)")
+        }
     }
 }
