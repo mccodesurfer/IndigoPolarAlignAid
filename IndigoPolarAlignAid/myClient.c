@@ -147,7 +147,7 @@ static indigo_result client_update_property(indigo_client *client, indigo_device
 }
 
 static indigo_result client_send_message(indigo_client *client, indigo_device *device, indigo_property *property, const char *message) {
-    indigo_log("%s recieved %s %s message: %s", client, property->device, property->name, message);
+    indigo_log("%s received %s %s message: %s", client, property->device, property->name, message);
     return INDIGO_OK;
 }
 
@@ -211,6 +211,10 @@ int myClient(int argc, const char ** argv, bool *isCancelled) {
             indigo_usleep(ONE_SECOND_DELAY);
         }
         while (connected == true) {
+            static const char * items[] = { CCD_ABORT_EXPOSURE_ITEM_NAME };
+            static bool values[] = { true };
+            indigo_log("aborting exposure... ");
+            indigo_change_switch_property(&client, CCD_SIMULATOR, CCD_ABORT_EXPOSURE_PROPERTY_NAME, 1, items, values);
             indigo_log("disconnecting... ");
             indigo_device_disconnect(&client, CCD_SIMULATOR);
             indigo_usleep(ONE_SECOND_DELAY);
