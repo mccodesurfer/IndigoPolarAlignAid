@@ -12,7 +12,7 @@ class SwClient {
     
     let targetRadius = 10.0
     var correctionVector = CGVector(dx: 50.0, dy: 50.0)
-    let imageURL = URL(string: "file:/Users/greg/Library/Containers/GB.IndigoPolarAlignAid/Data/img_01.jpg")
+    let imageURL = URL(string: "file:\(NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0])/../img_01.jpg")
 
     func setupFileMonitor() {
         // Example usage
