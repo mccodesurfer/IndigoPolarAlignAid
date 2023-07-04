@@ -30,7 +30,7 @@ struct OverlayView: View {
         .onTapGesture(coordinateSpace: .local) { location in
             print("Tap location: \(location)")
             selectedLocation = location
-            correctionVector = swClient.getCorrectionVector()
+            correctionVector = swClient.correctionVector
         }
     }
 }

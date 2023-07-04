@@ -11,10 +11,10 @@ struct StreamingImageView: View {
     var body: some View {
         let swClient: SwClient = SwClient.sharedInstance
         GeometryReader { geometry in
-//            Image(swClient.getImageURL())
+//            Image(swClient.imageURL.path)
 //                .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
             
-            AsyncImage(url: URL(string: swClient.getImageURL()))
+            AsyncImage(url: swClient.imageURL)
                 .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
         }
     }

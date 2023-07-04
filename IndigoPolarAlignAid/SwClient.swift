@@ -12,26 +12,22 @@ class SwClient {
     
     let targetRadius = 10.0
     var correctionVector = CGVector(dx: 50.0, dy: 50.0)
-    let fileURL = URL(fileURLWithPath: "file:/Users/greg/Library/Containers/GB.IndigoPolarAlignAid/Data/img_01.jpg")
-    
+    let imageURL = URL(string: "file:/Users/greg/Library/Containers/GB.IndigoPolarAlignAid/Data/img_01.jpg")
+
     func setupFileMonitor() {
         // Example usage
-        let fileMonitor = FileMonitor(fileURL: fileURL)
+        let fileMonitor = FileMonitor(fileURL: imageURL!)
         fileMonitor.startMonitoring()
         
         // Keep the program running to receive notifications
         RunLoop.current.run()
     }
     
-    func getImageURL() -> String {
-        return fileURL.path()
-    }
-    
-    func getCorrectionVector() -> CGVector {
-        return correctionVector
-    }
-    
     init() {
+        let _: Task = Task {
+            setupFileMonitor()
+        }
+        
         let myClientTask: Task = Task {
             let argc: CInt = 2
             var argv: [UnsafePointer<CChar>?] = [("IndigoPolarAlignAid" as NSString).utf8String,("2" as NSString).utf8String,nil]

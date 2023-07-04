@@ -15,9 +15,11 @@ class FileMonitor {
 
     init(fileURL: URL) {
         self.fileURL = fileURL
-        self.fileDescriptor = open(fileURL.path, O_EVTONLY)
-        self.fileMonitorQueue = DispatchQueue(label: "com.example.filemonitor")
-        self.fileMonitorSource = DispatchSource.makeFileSystemObjectSource(fileDescriptor: fileDescriptor, eventMask: .write, queue: fileMonitorQueue)
+        print(fileURL)
+        fileDescriptor = open(fileURL.path, O_EVTONLY)
+        print (fileDescriptor)
+        fileMonitorQueue = DispatchQueue(label: "GB.IndigoPolarAlignAid_filemonitor")
+        fileMonitorSource = DispatchSource.makeFileSystemObjectSource(fileDescriptor: fileDescriptor, eventMask: .write, queue: fileMonitorQueue)
     }
 
     func startMonitoring() {
