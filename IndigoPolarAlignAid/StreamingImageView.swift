@@ -8,13 +8,11 @@
 import SwiftUI
 
 struct StreamingImageView: View {
+    @State var imageURL: URL = URL(string: "file:\(NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0])/../img_01.jpg")!
     var body: some View {
-        let swClient: SwClient = SwClient.sharedInstance
+        let _ = FileMonitor(fileURL: $imageURL)
         GeometryReader { geometry in
-//            Image(swClient.imageURL.path)
-//                .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
-            
-            AsyncImage(url: swClient.imageURL)
+            AsyncImage(url: imageURL)
                 .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
         }
     }

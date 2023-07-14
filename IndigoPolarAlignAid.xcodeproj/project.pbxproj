@@ -13,7 +13,7 @@
 		371597822A1EB2B800E8BF1B /* libindigo.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 371597812A1EB2B800E8BF1B /* libindigo.dylib */; };
 		371597842A1EB2CD00E8BF1B /* libindigo.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 371597832A1EB2CD00E8BF1B /* libindigo.dylib */; };
 		372236E82A4F5BF900EC287B /* FileMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372236E72A4F5BF900EC287B /* FileMonitor.swift */; };
-		37387C302A2A161C008A11AE /* SwClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37387C2E2A28BDE9008A11AE /* SwClient.swift */; };
+		372A49602A61F3C700561530 /* SwClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372A495F2A61F3C700561530 /* SwClient.swift */; };
 		37387CD62A2B7353008A11AE /* StreamingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37387CD52A2B7353008A11AE /* StreamingImageView.swift */; };
 		37387CD82A2B76EB008A11AE /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37387CD72A2B76EB008A11AE /* OverlayView.swift */; };
 		3764367D2A19A08C0056AB85 /* IndigoPolarAlignAidApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3764367C2A19A08C0056AB85 /* IndigoPolarAlignAidApp.swift */; };
@@ -62,7 +62,7 @@
 		371597812A1EB2B800E8BF1B /* libindigo.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libindigo.dylib; path = ../../indigo/build/lib/libindigo.dylib; sourceTree = "<group>"; };
 		371597832A1EB2CD00E8BF1B /* libindigo.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libindigo.dylib; path = ../../indigo/build/lib/libindigo.dylib; sourceTree = "<group>"; };
 		372236E72A4F5BF900EC287B /* FileMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMonitor.swift; sourceTree = "<group>"; };
-		37387C2E2A28BDE9008A11AE /* SwClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwClient.swift; sourceTree = "<group>"; };
+		372A495F2A61F3C700561530 /* SwClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwClient.swift; sourceTree = "<group>"; };
 		37387CD52A2B7353008A11AE /* StreamingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingImageView.swift; sourceTree = "<group>"; };
 		37387CD72A2B76EB008A11AE /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		376436792A19A08C0056AB85 /* IndigoPolarAlignAid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IndigoPolarAlignAid.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,8 +144,8 @@
 				3764367E2A19A08C0056AB85 /* ContentView.swift */,
 				37387CD52A2B7353008A11AE /* StreamingImageView.swift */,
 				37387CD72A2B76EB008A11AE /* OverlayView.swift */,
-				37387C2E2A28BDE9008A11AE /* SwClient.swift */,
 				372236E72A4F5BF900EC287B /* FileMonitor.swift */,
+				372A495F2A61F3C700561530 /* SwClient.swift */,
 				376436A72A19A14D0056AB85 /* IndigoPolarAlignAid-Bridging-Header.h */,
 				3704B0FA2A45ED640045CBB9 /* myClient.h */,
 				3704B0FB2A45ED640045CBB9 /* myClient.c */,
@@ -316,7 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3764367F2A19A08C0056AB85 /* ContentView.swift in Sources */,
-				37387C302A2A161C008A11AE /* SwClient.swift in Sources */,
+				372A49602A61F3C700561530 /* SwClient.swift in Sources */,
 				372236E82A4F5BF900EC287B /* FileMonitor.swift in Sources */,
 				3764367D2A19A08C0056AB85 /* IndigoPolarAlignAidApp.swift in Sources */,
 				37387CD62A2B7353008A11AE /* StreamingImageView.swift in Sources */,
