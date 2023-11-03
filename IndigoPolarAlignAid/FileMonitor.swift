@@ -5,28 +5,31 @@
 //  Created by Greg on 2023-06-30.
 //
 
-import SwiftUI
 import Foundation
 
-class FileMonitor {
-    @Binding var fileURL: URL
+class FileMonitor : ObservableObject {
     let fileDescriptor: CInt
     let fileMonitorQueue: DispatchQueue
     let fileMonitorSource: DispatchSourceFileSystemObject
+    
+    @Published var fileUpdateCount: Int = 0
 
-    init(fileURL: Binding<URL>) {
-        self._fileURL = fileURL
-        fileDescriptor = open(fileURL.wrappedValue.path(), O_EVTONLY)
-        fileMonitorQueue = DispatchQueue(label: "GB.IndigoPolarAlignAid_filemonitor")
-        fileMonitorSource = DispatchSource.makeFileSystemObjectSource(fileDescriptor: fileDescriptor, eventMask: .write, queue: fileMonitorQueue)
-        startMonitoring()
-    }
+    init(filePath: URL) {
+        print(filePath)
+        fileDescriptor = open(filePath.path(), O_EVTONLY)
+        print(fileDescriptor)
+            fileMonitorQueue = DispatchQueue(label: "GB.IndigoPolarAlignAid_filemonitor")
+            fileMonitorSource = DispatchSource.makeFileSystemObjectSource(fileDescriptor: fileDescriptor, eventMask: .write, queue: fileMonitorQueue)
+        }
 
     func startMonitoring() {
         fileMonitorSource.setEventHandler {
             print("File has been written!")
-            // Perform any desired actions here
-            self.fileURL = self.fileURL
+            DispatchQueue.main.async {
+                self.fileUpdateCount += 1
+                // Perform any desired actions here
+                print (self.fileUpdateCount)
+            }
         }
 
         fileMonitorSource.setCancelHandler {
@@ -38,5 +41,9 @@ class FileMonitor {
 
     func stopMonitoring() {
         fileMonitorSource.cancel()
+    }
+    
+    func getFileUpdateCount() -> Int {
+        return self.fileUpdateCount
     }
 }

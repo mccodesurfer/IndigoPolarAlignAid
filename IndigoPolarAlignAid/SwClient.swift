@@ -30,7 +30,7 @@ class SwClient {
         }
         
         let _: Task = Task {
-            try await Task.sleep(for: .seconds(10))
+            try await Task.sleep(for: .seconds(2000))
             print("Timesup!")
             myClientTask.cancel()
             print("SwClient: isCancelled is \(myClientTask.isCancelled)")

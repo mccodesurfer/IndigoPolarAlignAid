@@ -46,7 +46,8 @@ static bool connected = false;
 static int count = 10;
 static int img_count = 1;
 
-#define CCD_SIMULATOR "CCD Guider Simulator @ indigosky"
+//#define CCD_SIMULATOR "CCD Guider Simulator @ indigosky"
+#define CCD_SIMULATOR "ZWO ASI294MC Pro @ indigosky"
 
 static indigo_result client_attach(indigo_client *client) {
     indigo_log("attached to INDI bus...");
