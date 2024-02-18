@@ -7,32 +7,20 @@
 
 import SwiftUI
 
-struct StreamingImageView: View {
-    private var filePath : URL?
-    @StateObject private var monitor : FileMonitor
-    @State var id = UUID()
-    
-    init(){
-        filePath = URL(string: "file:/Users/\(NSUserName())/Library/Containers/GB.IndigoPolarAlignAid/Data/img_01.jpg")!
-        let monitor = FileMonitor(filePath: filePath!)
-        self._monitor = StateObject(wrappedValue: monitor)
-        monitor.startMonitoring()
-    }
-    
-    var body: some View {
-        GeometryReader { geometry in
-            AsyncImage(url: filePath) { image in
-                image.image?
-                    .resizable().aspectRatio(contentMode: .fit)
-                    .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
-            }.id(UUID())
-            Text("count \(monitor.fileUpdateCount) \(filePath!.absoluteString)")
-        }
-    }
-}
+let filePath = URL(string: "file:/Users/\(NSUserName())/Library/Containers/GB.IndigoPolarAlignAid/Data/img_01.jpg")
 
-struct StreamingImageView_Previews: PreviewProvider {
-    static var previews: some View {
-        StreamingImageView()
+struct StreamingImageView: View {
+    @ObservedObject var monitor: FileMonitor = FileMonitor(filePath: filePath!)
+    var id: Int = 0
+
+    var body: some View {
+            AsyncImage(url: monitor.filePath)
+                    .id(monitor.fileUpdateCount)
+}
+    
+    struct StreamingImageView_Previews: PreviewProvider {
+        static var previews: some View {
+            StreamingImageView()
+        }
     }
 }

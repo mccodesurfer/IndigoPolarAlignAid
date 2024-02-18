@@ -8,7 +8,6 @@
 import Foundation
 
 class SwClient {
-    static let sharedInstance = SwClient() // so all view use the same instance
     
     let targetRadius = 10.0
     var correctionVector = CGVector(dx: 50.0, dy: 50.0)

@@ -6,29 +6,35 @@
 //
 
 import Foundation
+import SwiftUI
 
 class FileMonitor : ObservableObject {
-    let fileDescriptor: CInt
+    @Published var fileUpdateCount: Int = 0
+    @State var filePath: URL
+    var fileDescriptor: CInt = 0
     let fileMonitorQueue: DispatchQueue
     let fileMonitorSource: DispatchSourceFileSystemObject
     
-    @Published var fileUpdateCount: Int = 0
-
     init(filePath: URL) {
-        print(filePath)
+        self.filePath = filePath
         fileDescriptor = open(filePath.path(), O_EVTONLY)
-        print(fileDescriptor)
+        if fileDescriptor != 0 {
+            print("FileMonitor: filePath = \(filePath)")
+            print("FileMonitor: fileDescriptor = \(fileDescriptor)")
+        } else {
+            print("FileMonitor: fileDescriptor failed")
+        }
             fileMonitorQueue = DispatchQueue(label: "GB.IndigoPolarAlignAid_filemonitor")
             fileMonitorSource = DispatchSource.makeFileSystemObjectSource(fileDescriptor: fileDescriptor, eventMask: .write, queue: fileMonitorQueue)
+            startMonitoring()
         }
 
     func startMonitoring() {
         fileMonitorSource.setEventHandler {
-            print("File has been written!")
             DispatchQueue.main.async {
-                self.fileUpdateCount += 1
                 // Perform any desired actions here
-                print (self.fileUpdateCount)
+                self.fileUpdateCount += 1
+                print("\nFileMonitor: File count \(self.fileUpdateCount) has been written!\n")
             }
         }
 
